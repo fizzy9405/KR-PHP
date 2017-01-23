@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Products</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <link rel='shortcut icon' type='image/x-icon' href='favicon2.ico' />
+    
+	<script type="text/javascript" src="engine1/jquery.js"></script>
+	<script type="text/javascript" src="js/jQuery.corner.js"></script>
+	<script type="text/javascript">
+		jQuery(document).on('ready', function() {
+			
+			jQuery('.wrapper').corner();
+			
+			function hideProducts() {
+			
+				for(var i = 1; i < 8; i++) {
+					jQuery('.product'+i).hide();
+				}
+			
+			}
+			
+			function removeActiveClass() {
+				jQuery('#menu8 a').each(function() {
+					if(jQuery(this).hasClass('active')) {
+						jQuery(this).removeClass('active');
+					}
+				});
+			}
+			
+			function setDefaultSettings() {
+				
+				hideProducts();
+				jQuery('.product1').show();
+				jQuery('#menu8 a').first().addClass('active');
+				jQuery('.products-info h3').text(jQuery('.products-gallery a').first().data('description'));
+				
+			}
+			
+			function findByUrlPath() {
+				var url = window.location.hash, idx = url.indexOf("#")
+				var hash = idx != -1 ? url.substring(idx+1) : "";
+				
+				if(hash.length > 0) {
+					
+					removeActiveClass();
+					hideProducts();
+					
+					var productClass = '.'+ hash;
+					var title = jQuery(productClass + ' .products-gallery a').first().data('description');
+					
+					jQuery(productClass).show();
+					jQuery(productClass + ' .products-info h3').text(title);
+					
+					jQuery('#menu8 a').each(function() {
+						if(jQuery(this).data('class') == hash) {
+							jQuery(this).addClass('active');
+						}
+					});
+					
+					
+				}
+				else {
+					setDefaultSettings();
+				}
+			}
+			
+			findByUrlPath();
+			
+			
+			jQuery('#menu8 a').on('click', function(){
+				
+				var productID = '.'+jQuery(this).data('class');
+				
+				hideProducts();
+				removeActiveClass();
+				
+				var title = jQuery(productID + ' .products-gallery a').first().data('description');
+				jQuery(productID + ' .products-info h3').text(title);
+				jQuery(this).addClass('active');
+				jQuery(productID).fadeIn();
+				var firstImage = jQuery(productID + ' .products-gallery a').first().find('img')[0];
+				
+				jQuery(productID + ' .main-image').prop('src', firstImage.src);
+				
+			});
+			
+			jQuery('.products-gallery a').on('click', function(){
+				
+				var image = jQuery(this).find('img')[0];
+				var imageSource = image.src;
+				var productTitle = jQuery(this).data('description');
+				
+				jQuery('.products-info h3').text(productTitle);
+				jQuery('.main-image').prop('src', imageSource);
+			
+				
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="header">
+		<h1><a href="index2.html" id="sitetitle">BODY HEALTH</a></h1>
+		<ul>
+			<li>
+				<a href="index2.html"><img src="images/home.png" alt="Image"> Home</a>
+			</li>
+			<li class="current">
+				<a href="services2.html"><img src="images/products.png" alt="Image"> Products</a>
+			</li>
+			<li>
+				<a href="blog2.html"><img src="images/info.png" alt="Image"> BH</a>
+			</li>
+			<li>
+				<a href="about2.html"><img src="images/delivery.png" alt="Image"> Delivery</a>
+			</li>
+			<li>
+				<a href="contact2.html"><img src="images/contacts.png" alt="Image"> Contacts</a>
+			</li>
+		</ul>
+	</div>
+	<div id="body">
+		<div class="services">
+			<h1><img src="images/products2.jpg" alt="Image"></h1>
+			<div class="wrapper" style="width:918px;">
+				<div id="menu8">
+				<h3>Категории</h3>
+				  <ul>
+					<li><a href="javascript:void(0);" data-class="product1">100% Whey Gold Standard</a></li>
+					<li><a href="javascript:void(0);" data-class="product2">Gainers</a></li>
+					<li><a href="javascript:void(0);" data-class="product3">PRO Complex</a></li>
+					<li><a href="javascript:void(0);" data-class="product4">Hydro WHEY</a></li>
+					<li><a href="javascript:void(0);" data-class="product5">Amino</a></li>
+					<li><a href="javascript:void(0);" data-class="product6">Protein</a></li>
+				  </ul>
+				</div>
+				<div id="my-products">
+					<div class="product1">
+						<div class="products-main">
+							<img src="images/1/img1_01.jpg" alt="" class="main-image"/>
+						</div>
+						<div class="products-info">
+							<h3>product name</h3>
+							100% Whey Gold Standard - златният стандарт сред протеините!
+
+							Откакто съществува на пазара, името и бранда Оптимум Нутришън налага най-високият стандарт, спрямо който се съобразяват всички висококачествени протеинови продукти. Сега Оптимум Нутришън отново залагат на нов, по-качествен и по-висок стандарт, със "златният" протеин от трето поколение 100% Whey Gold Standard.
+
+							Това което прави Оптимум Нутришън различна марка е разнообразието от продукти и най-висок стандарт на качество. Качеството на 100% Whey Gold Standard не изостава от славата на производителя. Установяващ стандартите сред суроватъчните протеини, 100% Whey Gold Standard може да ви гарантира резултатите , които го правят най-продаваният протеин в света.
+
+							100% Whey Gold Standard съдържа богато разнообразие от качествени източници на суроватъчен протеин. В неговото съдържание са включени:<br/>
+
+								Микрофилтриран суроватъчен протеин изолат<br/>
+								Йонно-обменен суроватъчен протеин изолат<br/>
+								Ултрафилтриран суроватъчен протеин концентрат<br/>
+								“Hydro Whey” хидролизирани суроватъчни пептиди<br/>
+						</div>
+						<div class="products-gallery">
+							<a href="javascript:void(0);" data-description="100% Whey Gold Standard(4536г) - Price: 209.00лв">
+								<img src="images/1/img1_01.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="100% Whey Gold Standard(908г) - Price: 57.00лв">
+								<img src="images/1/img1_02.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="100% Whey Gold Standard(2272г) - Price: 108.00лв">
+								<img src="images/1/img1_03.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="100% Whey Gold Standard(Еднократна Доза) - Price: 3.50лв
+">
+								<img src="images/1/img1_04.jpg" alt="" width="120" height="136"/>
+							</a>
+						</div>
+					</div>
+					<div class="product2">
+						<div class="products-main">
+							<img src="images/2/img2_02.jpg" alt="" class="main-image"/>
+						</div>
+						<div class="products-info">
+							<h3>product name</h3>
+							Serious Mass е гейнър от високия клас, който поставя нови висоти за трениращите, които търсят покачване на мускулна маса.
+
+Serious Mass е комплексна формула, която съдържа чудовищните 1250 калории в доза с пълноценен комплекс от въглехидрати, белтъчини и мазнини. Максимално възможното количество хранителни вещества за захранване на вашето тяло. Във всяка доза Serious Mass ще откриете 50 грама качествен протеин за захранване на мускулната тъкан с аминокиселини, които предразполагат към благоприятни условия за техния растеж. Към протеина Serious Mass предлага бленд от 252 грама въглехидрати, който включва както бавноусвояеми, така и бързоусвояеми компоненти. Чрез този бленд глюкогеновите депа ще бъдат запълнени веднага след тренировката, като процеса ще бъде подържан и в следващите няколко часа.
+
+Serious Mass е предназначен за тези трениращи, които се сблъскват със застоя в покачване на мускулна маса и тренировките си. Освен пълната гама от минерали и витамини продукта предлага и необходимите за преодоляване липсата на прогрес глутамин, креатин, холин и инозитол в нужните дози.
+						</div>
+						<div class="products-gallery">
+							<a href="javascript:void(0);" data-description="Pro Complex Gainer(4612г) - Price: 118.00лв">
+								<img src="images/2/img2_01.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Pro Complex Gainer(2306г) - Price: 80.00лв">
+								<img src="images/2/img2_02.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Serious Mass(2.72кг) - Price: 64.00лв">
+								<img src="images/2/img2_03.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Serious Mass(5.45кг) - Price: 110.00лв">
+								<img src="images/2/img2_04.jpg" alt="" width="120" height="136"/>
+							</a>
+						</div>
+					</div>
+					<div class="product3">
+						<div class="products-main">
+							<img src="images/3/img3_01.jpg" alt="" class="main-image"/>
+						</div>
+						<div class="products-info">
+							<h3>product name</h3>
+							Pro Complex е ново поколение многокомпонентен протеин на Optimum Nutrition, съдържащ няколко източника от бързо и бавноусвояеми белтъчини.
+
+Pro Complex Ви предлага:
+
+    Йоннообменен и микрофилтриран суроватъчен протеин
+    Суроватъчни пептиди с ниско молекулярно тегло
+    Яйчен Албумин
+    Мощна BCАA формула
+    Само 4 г въглехидрати
+
+
+Оptimum Nutrition представя по-големия и по-добър Pro Complex. Тази модерна формула съдържа 55 грама мулти-протеинова смес, състояща се от суроватъчни протеинови изолати, суроватъчен протеинов концентрат, яйчен албумин и хидролизирани суроватъчни пептиди. Повечето BCАA и глутамин придават впечатляващ аминокиселинен профил.
+
+Сега без Аспартам, Pro Complex предлага пълна гама от витамини и незаменими минерали и 250 мг храносмилателни ензими във всяка доза!.
+						</div>
+						<div class="products-gallery">
+							<a href="javascript:void(0);" data-description="Pro Complex(1045г) - Price: 68.00лв">
+								<img src="images/3/img3_01.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Pro Complex(2088г) - Price: 124.00лв">
+								<img src="images/3/img3_02.jpg" alt="" width="120" height="136"/>
+							</a>
+						</div>
+					</div>
+					<div class="product4">
+						<div class="products-main">
+							<img src="images/4/img4_01.jpg" alt="" class="main-image"/>
+						</div>
+						<div class="products-info">
+							<h3>product name</h3>
+							Hydro Whey! Протеинът, с който царят на производителя на протеини Optimum Nutrition отново е в центъра на събитията! Години наред всички са луди по Gold Standard-та на марката, но вече манията е друга! Представяме ви :
+
+    Най - бързият!
+    Най - чистият!
+    Най - напредналият суроватъчен протеин на пазар в света!
+
+
+Представяме ви PLATINUM Hydro Whey! - Новата мания по света!
+
+    Направен от хидролизиран суроватъчен протеин изолат за максимално бързо усвояване.
+    30 грама свръх-чист протеин в доза
+    9 ГРАМА Леуцин, Изолевцин и Валин в доза (БЦАА)
+    НАЙ - ВИСОКАТА ДОЗА БЦАА в протеин на пазара!!!
+    Без лактоза, Холестерол, Захар
+    Обоготен с ензими, подпомагащи храносмилането
+    Лесно разтворим даже и с лъжица!
+						</div>
+						<div class="products-gallery">
+							<a href="javascript:void(0);" data-description="Hydro Whey(1.6кг) - Price: 133.00лв">
+								<img src="images/4/img4_01.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Hydro Whey(877г) - Price: 90.00лв">
+								<img src="images/4/img4_02.jpg" alt="" width="120" height="136"/>
+							</a>
+						</div>
+					</div>
+					<div class="product5">
+						<div class="products-main">
+							<img src="images/5/img5_01.jpg" alt="" class="main-image"/>
+						</div>
+						<div class="products-info">
+							<h3>product name</h3>
+							BCAA 5000 Powder - верижно-разклонени аминокиселини на прах, перфектният начин да се възстановите!
+
+BCAA 5000 Powder може да стимулират протеиновия синтез дори и в отсъствието на тренировки. BCAA 5000 Powder играят ролята на азотен донор под формата на L-Аланин, който също се превръща в глюкоза, когато гликогеновите запаси са изчерпани. Така че не е нужно да взимате огромни количества въглехидрати, за да запазите гликогена в тялото си.
+
+Може би най-интересното свойство на BCAA 5000 Powder  е способността им да спомагат за горенето на мазнини. Когато организма усети наличието им в кръвния поток по време на упражнения, което е знак за интензивен мускулен разпад, то автоматично подава сигнал към съответните механизми да започнат да използват мазнините като гориво вместо ценния протеин, намиращ се в мускулите.
+						</div>
+						<div class="products-gallery">
+							<a href="javascript:void(0);" data-description="Amino(2222 Tabs) - Price: 27.00лв">
+								<img src="images/5/img5_01.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Amino(2222 Capsules) - Price: 36.00лв">
+								<img src="images/5/img5_02.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Liquid Amino(2222 Течни Аминокиселини) - Price: 44.00лв">
+								<img src="images/5/img5_03.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Glutamine(1000мг) - Price: 49.00лв">
+								<img src="images/5/img5_04.jpg" alt="" width="120" height="136"/>
+							</a>
+						</div>
+					</div>
+					<div class="product6">
+						<div class="products-main">
+							<img src="images/8/img8_01.jpg" alt="" class="main-image"/>
+						</div>
+						<div class="products-info">
+							<h3>product name</h3>
+							After Max предлага оптимално съотношение на протеин, мазнини и въглехидрати, които спомагат за по-доброто усвояване на добавеният креатин.
+
+After Max съдържа 40 гр висококачествен суроватъчен протеин, чието бързо усвояване захранва мускулите непосредствено след тренировка. Това създава предпоставка за по-добро и качествено възстановяване. Към формулата са добавени и 40 грама въглехидрати с бърз и бавен гликемичен индекс. Така глюкогеновите депа се зареждат моментално след тренировката и биват подържани за по-дълъг период от време.
+
+Всяка доза от After Max съдържа 5 грама Креатин монохидрат, 5 грама Глутамин и 1 грам Таурин. Съчетанието оптимизира възстановяването след тренировка и покачването на мускулна маса.
+
+After Max е продукт, който предлага най-пълното възможно възстановяване, трябва да е избора на всеки, който е решил да похарчи парите си само за един суплемент. Перфектният избор за хора, които желаят да ползват протеиново -въглехидратен комплекс, като към това получават безплатно оптимални дози от креатин и глутамин.
+						</div>
+						<div class="products-gallery">
+							<a href="javascript:void(0);" data-description="100% Casein Protein(908г) - Price: 68.00лв">
+								<img src="images/8/img8_01.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="After Max(1838г) - Price: 87.00лв">
+								<img src="images/8/img8_02.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="Natural 100% Oats&Whey(1360гр) - Price: 75.00лв">
+								<img src="images/8/img8_03.jpg" alt="" width="120" height="136"/>
+							</a>
+							<a href="javascript:void(0);" data-description="100% Casein Protein(Еднократна доза) - Price: 3.50лв">
+								<img src="images/8/img8_04.jpg" alt="" width="120" height="136"/>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div style="clear:both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div>
+			<a href="https://twitter.com/BodyHealth5" target="_blank" id="twitter">Twitter</a>
+			<a href="https://www.facebook.com/Body.Health.Best.Price" target="_blank" id="facebook">Facebook</a>
+			<a href="https://plus.google.com/102308284390566014872/about" target="_blank" id="googleplus">Google&#43;</a>
+		</div>
+		<p>
+			Bulgarian version. <a href="services.html"><img src="images/flag-bg.png" alt="Image"></a><br><br><a href="index2.html">BODY HEALTH</a> &copy; Copyright 2013. All rights reserved.
+		</p>
+	</div>
+</body>
+</html>
